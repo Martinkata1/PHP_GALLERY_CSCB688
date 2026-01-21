@@ -2,6 +2,8 @@
 require __DIR__ . '/config/db.php';
 require __DIR__ . '/includes/functions.php';
 require __DIR__ . '/includes/header.php';
+require __DIR__ . '/auth.php';
+
 
 
 //Фетч всички снимки

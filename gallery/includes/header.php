@@ -1,5 +1,6 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) session_start();
+
 ?>
 <!doctype html>
 <html lang="bg">
@@ -16,10 +17,20 @@ if (session_status() === PHP_SESSION_NONE) session_start();
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
 <div class="container">
-<a class="navbar-brand" href="/">Галерия</a>
-<div>
-<a class="btn btn-sm btn-outline-primary" href="upload.php">Качи снимка</a>
-</div>
+    <a class="navbar-brand" href="/">Галерия</a>
+    <div>
+        <!-- Качи снимка -->
+        <a class="btn btn-sm btn-outline-primary me-2" href="upload.php">Качи снимка</a>
+
+        <!-- Проверка дали е логнат -->
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <span class="me-2">Здравей, <?= h($_SESSION['username']) ?></span>
+            <a href="logout.php" class="btn btn-sm btn-outline-danger">Изход</a>
+        <?php else: ?>
+            <a href="login.php" class="btn btn-sm btn-outline-success">Вход</a>
+        <?php endif; ?>
+    </div>
 </div>
 </nav>
-<div class="container"></div>
+
+<div class="container">
